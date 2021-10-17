@@ -1,4 +1,4 @@
-mx=[]
+mainmx=[]
 rows = 4;
 columns = 4;
 rowIn = document.getElementById('rows-in');
@@ -81,7 +81,7 @@ function fixGauss(mx) {
     r = mx.length;
     c = mx[0].length;
     i = cr;
-    while (j < c - 1 && mx[i][j] == 0) {
+    while (i<r && j < c - 1 && mx[i][j] == 0) {
       if (i < r - 1) {
         i += 1;
       } else {
@@ -112,24 +112,25 @@ function fixGauss(mx) {
 function updateMatrixSizes(){
     rows=rowIn.value;
     columns=colIn.value;
-    generateMatrix(mx);
-    document.getElementById("main-container").innerHTML = generateHtml(mx);
+    mainmx=generateMatrix(mainmx);
+    document.getElementById("main-container").innerHTML = generateHtml(mainmx);
 }
 function changeInput(i, j, val){
-    mx[i][j]=parseInt(val);
+    mainmx[i][j]=parseInt(val);
 }
 function updateValues(){
     for (i = 0; i < rows; i++) {
         for (j = 0; j < columns; j++) {
-            document.getElementById(`input-${i}-${j}`).value=mx[i][j];
+            document.getElementById(`input-${i}-${j}`).value=mainmx[i][j];
         }
     }
 }
 function solve(){
-    gauss(mx, 0, 0);
+    console.log(mainmx);
+    gauss(mainmx, 0, 0);
     updateValues();
 }
 
 content = document.getElementById("main-container");
-mx = generateMatrix([]);
-content.innerHTML = generateHtml(mx);
+mainmx = generateMatrix([]);
+content.innerHTML = generateHtml(mainmx);
