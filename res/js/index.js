@@ -1,5 +1,5 @@
 mainmx=[]
-rows = 4;
+rows = 3;
 columns = 4;
 rowIn = document.getElementById('rows-in');
 colIn = document.getElementById('col-in');
